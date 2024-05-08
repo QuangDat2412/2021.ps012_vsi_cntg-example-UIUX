@@ -8,16 +8,12 @@
   "targets": {
     "build": {
       "executor": "@nx/angular:webpack-browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/host",
         "index": "host/src/index.html",
         "main": "host/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "host/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -27,15 +23,9 @@
             "input": "apps/bone/src/assets",
             "glob": "**/*",
             "output": "./bone/assets"
-          },
-          {
-            "input": "node_modules/@bidv-auth/layout/assets",
-            "glob": "**/*",
-            "output": "./assets"
           }
         ],
         "styles": [
-          "node_modules/@bidv-auth/cdk/src/loading.css",
           "host/src/styles.scss",
           "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
           "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
@@ -45,10 +35,7 @@
         "customWebpackConfig": {
           "path": "host/webpack.config.ts"
         },
-        "allowedCommonJsDependencies": [
-          "base64-js",
-          "js-sha256"
-        ]
+        "allowedCommonJsDependencies": ["base64-js", "js-sha256"]
       },
       "configurations": {
         "production": {

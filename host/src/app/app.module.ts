@@ -1,8 +1,6 @@
-import { APP_INITIALIZER, NgModule, isDevMode } from '@angular/core';
-import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-
+import { NgModule, isDevMode } from '@angular/core';
+import { KeycloakAngularModule } from 'keycloak-angular';
 import { AppComponent } from './app.component';
-import { BidvAuthModule } from '@bidv-auth/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,16 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { appRoutes } from './app.routes';
-import { initializer } from '@bidv-auth/cdk';
 
-function initializeKeycloak(keycloak: KeycloakService) {
-  return initializer(
-    keycloak,
-    'bidv-client',
-    process.env['NX_KEYCLOAK_URL'] ??
-      'http://keycloak-smart-teller.apps.ttptnhs.ldapudtest.com/'
-  );
-}
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -51,16 +40,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
     KeycloakAngularModule,
     HttpClientModule,
-    BidvAuthModule,
   ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService],
-    },
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
