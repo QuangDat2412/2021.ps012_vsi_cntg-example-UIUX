@@ -1,0 +1,7 @@
+{
+  "/esb/idmapi/*": {
+    "target": "http://kong-api-smart-teller.apps.ttptnhs.ldapudtest.com",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
